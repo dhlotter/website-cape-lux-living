@@ -50,16 +50,10 @@ const Contact = () => {
       action: "Send us an email"
     },
     {
-      icon: MapPin,
-      title: "Location",
-      details: ["Cape Town", "Western Cape, South Africa"],
-      action: "Servicing Greater Cape Town"
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: ["Mon - Fri: 8:00 - 18:00", "Sat: 9:00 - 15:00"],
-      action: "24/7 emergency support"
+      icon: MessageSquare,
+      title: "WhatsApp",
+      details: ["+27 82 123 4567"],
+      action: "Quick responses via WhatsApp"
     }
   ];
 
@@ -82,7 +76,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card className="border-0 bg-white shadow-luxury">
+          <Card className="border-0 bg-white shadow-luxury h-fit lg:h-full">
             <CardHeader>
               <CardTitle className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
@@ -191,18 +185,6 @@ const Contact = () => {
               );
             })}
 
-            {/* WhatsApp CTA */}
-            <Card className="border-0 bg-gradient-primary text-white">
-              <CardContent className="p-6 text-center">
-                <h3 className="font-semibold mb-2">Quick Response Needed?</h3>
-                <p className="text-white/90 mb-4 text-sm">
-                  Get instant answers via WhatsApp
-                </p>
-                <Button variant="hero" size="default" className="bg-white/20 hover:bg-white/30">
-                  WhatsApp Us
-                </Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

@@ -11,13 +11,6 @@ const Footer = () => {
       "Maintenance",
       "Revenue Optimization"
     ],
-    "Company": [
-      "About Us",
-      "Our Team",
-      "Testimonials",
-      "Careers",
-      "Partner With Us"
-    ],
     "Legal": [
       "Privacy Policy",
       "Terms of Service",
