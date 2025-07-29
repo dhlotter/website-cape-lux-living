@@ -1,0 +1,100 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Home, Building, Briefcase, FileText, Phone, List } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    { name: "Home", href: "#", icon: Home },
+    { name: "About Us", href: "#about", icon: Building },
+    { name: "Our Services", href: "#services", icon: Briefcase },
+    { name: "Listings", href: "#listings", icon: List },
+    { name: "Our Fees", href: "#fees", icon: FileText },
+    { name: "Contact", href: "#contact", icon: Phone }
+  ];
+
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-elegant">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <Building className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                Cape Lux Living
+              </span>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-foreground hover:text-primary transition-smooth px-3 py-2 rounded-md text-sm font-medium hover:bg-muted"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <Button variant="luxury" size="default">
+              List With Us
+            </Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className={cn(
+        "md:hidden transition-all duration-300 ease-in-out",
+        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+      )}>
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-border">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                className="flex items-center space-x-3 text-foreground hover:text-primary hover:bg-muted block px-3 py-2 rounded-md text-base font-medium transition-smooth"
+                onClick={() => setIsOpen(false)}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{item.name}</span>
+              </a>
+            );
+          })}
+          <div className="pt-4">
+            <Button variant="luxury" size="default" className="w-full">
+              List With Us
+            </Button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navigation;
