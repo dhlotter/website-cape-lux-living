@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Star } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Pricing = () => {
   const pricingFeatures = [
@@ -19,8 +20,16 @@ const Pricing = () => {
     "Revenue optimization strategies"
   ];
 
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section id="fees" className="py-20 bg-muted/30">
+    <section 
+      ref={ref}
+      id="fees" 
+      className={`py-20 bg-muted/30 transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <Badge variant="secondary" className="mb-4">

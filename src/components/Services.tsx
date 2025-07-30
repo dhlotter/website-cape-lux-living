@@ -11,6 +11,7 @@ import {
   CheckCircle,
   ArrowRight
 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Services = () => {
   const services = [
@@ -69,8 +70,16 @@ const Services = () => {
     { icon: Headphones, title: "24/7 Support", description: "Round-the-clock assistance for owners and guests" }
   ];
 
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section id="services" className="py-20 bg-background">
+    <section 
+      ref={ref}
+      id="services" 
+      className={`py-20 bg-background transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <Badge variant="secondary" className="mb-4">
