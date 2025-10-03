@@ -1,34 +1,92 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Award, Heart, Target, Zap } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Award, Heart, Target, Zap, Users } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useEffect, useState } from "react";
 
 const About = () => {
+  const carouselImages = [
+    "/src/assets/carousel/image-01.jpg",
+    "/src/assets/carousel/image-02.jpg",
+    "/src/assets/carousel/image-03.jpg",
+    "/src/assets/carousel/image-04.jpg",
+    "/src/assets/carousel/image-05.jpg",
+    "/src/assets/carousel/image-06.jpg",
+    "/src/assets/carousel/image-07.jpg",
+    "/src/assets/carousel/image-08.jpg",
+    "/src/assets/carousel/image-09.jpg",
+    "/src/assets/carousel/image-10.jpg",
+    "/src/assets/carousel/image-11.jpg",
+    "/src/assets/carousel/image-12.jpg",
+    "/src/assets/carousel/image-13.jpg",
+    "/src/assets/carousel/image-14.jpg",
+    "/src/assets/carousel/image-15.jpg",
+    "/src/assets/carousel/image-16.jpg",
+    "/src/assets/carousel/image-17.jpg",
+    "/src/assets/carousel/image-18.jpg",
+    "/src/assets/carousel/image-19.jpg",
+    "/src/assets/carousel/image-20.jpg",
+    "/src/assets/carousel/image-21.jpg",
+    "/src/assets/carousel/image-22.jpg",
+    "/src/assets/carousel/image-23.jpg",
+    "/src/assets/carousel/image-24.jpg",
+    "/src/assets/carousel/image-25.jpg",
+    "/src/assets/carousel/image-26.jpg"
+  ];
+
   const values = [
-    {
-      icon: Heart,
-      title: "Client-Centric Approach",
-      description: "Every decision we make puts our property owners and guests at the heart of our service delivery."
-    },
     {
       icon: Award,
       title: "Excellence in Service",
-      description: "We maintain the highest standards in property management, ensuring exceptional experiences."
+      description: "We set the highest standards in everything we do— from pricing strategies to property care-ensuring owners and guests experience nothing less than the best."
+    },
+    {
+      icon: Heart,
+      title: "Trust & Transparency",
+      description: "Open communication and honest reporting form the foundation of our partnerships. You'll always know how your property is performing."
     },
     {
       icon: Target,
-      title: "Results-Driven",
-      description: "Our focus is on maximizing your property returns while maintaining superior guest satisfaction."
+      title: "Attention to Detail",
+      description: "Every property deserves meticulous care. From professional cleaning to proactive maintenance, we treat your investment as if it were our own."
+    },
+    {
+      icon: Users,
+      title: "Guest-Centric Approach",
+      description: "Happy guests mean repeat bookings and stronger returns. We focus on creating memorable stays that drive long-term success for our owners."
     },
     {
       icon: Zap,
-      title: "Innovation & Technology",
-      description: "Leveraging cutting-edge tools and platforms to optimize your property's performance."
+      title: "Boutique Personalization",
+      description: "No two properties-or owners-are the same. Our tailored solutions ensure your property receives the individual attention it deserves."
     }
   ];
 
   const { ref, isVisible } = useScrollAnimation();
+  const [api, setApi] = useState<any>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 3000); // Auto-scroll every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [api]);
 
   return (
     <section 
@@ -46,43 +104,58 @@ const About = () => {
               About Cape Lux Living
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Meet Johan du Plessis
-              <span className="block text-primary">Your Property Management Expert</span>
+              Personalized Property Management, Elevated
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              With over a decade of experience in Cape Town's luxury property market, Johan du Plessis 
-              founded Cape Lux Living to provide property owners with unparalleled management services 
-              that maximize returns while ensuring exceptional guest experiences.
+              Founded by Johan du Plessis, Cape Lux Living brings over a decade of expertise in Cape Town's luxury property market to discerning property owners. Our boutique approach blends strategic management with a personal touch—ensuring your investment not only achieves its full earning potential but also delivers unforgettable guest experiences.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our boutique approach means every property receives personalized attention, from strategic 
-              pricing and marketing to meticulous maintenance and guest relations. We understand that 
-              your property is more than an investment - it's a reflection of your standards.
+              At Cape Lux Living, every property is treated as a reflection of your standards. From tailored pricing strategies and world-class marketing to meticulous maintenance and warm guest relations, we go beyond management—we create lasting value.
             </p>
-            <Button variant="luxury" size="lg">
-              Discover Our Approach
-            </Button>
           </div>
 
-          {/* Image */}
+          {/* Image Carousel */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-luxury">
-              <img 
-                src="/lovable-uploads/a9cb49f8-f32b-4afc-a859-2d8f161c8df5.png"
-                alt="Johan du Plessis - Cape Lux Living Founder"
-                className="w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-            </div>
+            <Carousel 
+              className="w-full max-w-lg mx-auto"
+              setApi={setApi}
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+            >
+              <CarouselContent>
+                {carouselImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative rounded-2xl overflow-hidden shadow-luxury">
+                      <img 
+                        src={image}
+                        alt={`Property showcase ${index + 1}`}
+                        className="w-full h-[500px] object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden" />
+              <CarouselNext className="hidden" />
+            </Carousel>
             
-            {/* Floating Card */}
-            <Card className="absolute -bottom-6 -left-6 bg-white shadow-luxury border-0">
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold text-primary mb-1">10+</div>
-                <div className="text-sm text-muted-foreground">Years of Excellence</div>
-                <div className="text-sm text-muted-foreground">in Luxury Property Management</div>
-              </CardContent>
-            </Card>
+            {/* Custom Dots Indicator */}
+            <div className="flex justify-center mt-4 space-x-2">
+              {carouselImages.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === current 
+                      ? "bg-primary w-8" 
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                  }`}
+                  onClick={() => api?.scrollTo(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -97,7 +170,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (

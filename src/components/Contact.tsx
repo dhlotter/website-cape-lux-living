@@ -6,11 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { 
   Phone, 
-  Mail, 
   MapPin, 
   Clock,
-  Send,
-  MessageSquare
+  Send
 } from "lucide-react";
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -20,7 +18,6 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    propertyType: "",
     message: ""
   });
 
@@ -43,18 +40,6 @@ const Contact = () => {
       title: "Phone",
       details: ["+27 (0) 21 123 4567", "+27 (0) 82 123 4567"],
       action: "Call us directly"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      details: ["info@capeluxliving.co.za", "johan@capeluxliving.co.za"],
-      action: "Send us an email"
-    },
-    {
-      icon: MessageSquare,
-      title: "WhatsApp",
-      details: ["+27 82 123 4567"],
-      action: "Quick responses via WhatsApp"
     }
   ];
 
@@ -89,7 +74,7 @@ const Contact = () => {
             <CardHeader>
               <CardTitle className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <MessageSquare className="w-5 h-5 text-white" />
+                  <Send className="w-5 h-5 text-white" />
                 </div>
                 <span>Tell Us About Your Property</span>
               </CardTitle>
@@ -122,27 +107,15 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+27 82 123 4567"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="propertyType">Property Type</Label>
-                    <Input
-                      id="propertyType"
-                      name="propertyType"
-                      value={formData.propertyType}
-                      onChange={handleChange}
-                      placeholder="Apartment, Villa, Townhouse..."
-                    />
-                  </div>
+                <div>
+                  <Label htmlFor="phone">Phone Number</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+27 82 123 4567"
+                  />
                 </div>
 
                 <div>

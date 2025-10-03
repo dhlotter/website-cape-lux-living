@@ -55,8 +55,7 @@ const Pricing = () => {
               </div>
               
               <CardTitle className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                20%
-                <span className="text-lg font-normal text-muted-foreground ml-2">+ VAT</span>
+                15%
               </CardTitle>
               
               <p className="text-xl text-primary font-semibold mb-2">
@@ -85,32 +84,7 @@ const Pricing = () => {
                 </div>
               </div>
 
-              <div className="bg-muted/50 rounded-lg p-6 mb-8">
-                <h4 className="font-semibold text-foreground mb-3">Payment Schedule</h4>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div className="flex justify-between">
-                    <span>Monthly payouts:</span>
-                    <span className="font-medium">Available</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Bi-weekly payouts:</span>
-                    <span className="font-medium">Available</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Owner dashboard access:</span>
-                    <span className="font-medium">Real-time</span>
-                  </div>
-                </div>
-              </div>
 
-              <div className="text-center">
-                <Button variant="luxury" size="lg" className="w-full md:w-auto">
-                  Start Earning Today
-                </Button>
-                <p className="text-xs text-muted-foreground mt-4">
-                  No setup fees • No monthly minimums • Cancel anytime
-                </p>
-              </div>
             </CardContent>
           </Card>
 

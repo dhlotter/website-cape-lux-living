@@ -24,18 +24,9 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Maximize your property investment returns with our comprehensive luxury property management services in Cape Town's most exclusive locations.
+          Your Partner in Exclusive Property Management.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button variant="hero" size="xl" className="group">
-              List Your Property
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="accent" size="xl">
-              Explore Properties
-            </Button>
-          </div>
 
           {/* Trust Indicators */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
@@ -67,8 +58,8 @@ const Hero = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full mb-3">
                 <Users className="w-6 h-6 text-accent" />
               </div>
-              <div className="text-2xl font-bold text-white">500+</div>
-              <div className="text-white/80 text-sm">Happy Clients</div>
+              <div className="text-2xl font-bold text-white">1000's</div>
+              <div className="text-white/80 text-sm">of Happy Clients</div>
             </div>
           </div>
         </div>

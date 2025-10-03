@@ -6,10 +6,9 @@ import {
   Users, 
   Home, 
   TrendingUp, 
-  Shield, 
-  Headphones,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  Hammer
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -62,13 +61,21 @@ const Services = () => {
         "Revenue forecasting",
         "Performance dashboards"
       ]
+    },
+    {
+      icon: Hammer,
+      title: "Renovations",
+      description: "Complete renovation and improvement services to enhance your property's value and appeal.",
+      features: [
+        "Interior design & styling",
+        "Kitchen & bathroom upgrades",
+        "Flooring & lighting improvements",
+        "Furniture & decor selection",
+        "Project management & coordination"
+      ]
     }
   ];
 
-  const additionalServices = [
-    { icon: Shield, title: "Insurance & Legal", description: "Comprehensive coverage and compliance" },
-    { icon: Headphones, title: "24/7 Support", description: "Round-the-clock assistance for owners and guests" }
-  ];
 
   const { ref, isVisible } = useScrollAnimation();
 
@@ -95,8 +102,8 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Main Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* Main Services Grid - Single Row Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -131,27 +138,6 @@ const Services = () => {
           })}
         </div>
 
-        {/* Additional Services */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {additionalServices.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <Card key={index} className="group hover:shadow-elegant transition-all duration-300 border-0 bg-muted/50">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">{service.title}</h4>
-                      <p className="text-sm text-muted-foreground">{service.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
 
         {/* CTA */}
         <div className="text-center">
@@ -162,7 +148,7 @@ const Services = () => {
             Join hundreds of property owners who trust Cape Lux Living to manage their investments 
             and deliver exceptional returns.
           </p>
-          <Button variant="luxury" size="lg" className="group">
+          <Button variant="luxury" size="lg" className="group" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
             Get Started Today
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
