@@ -6,34 +6,62 @@ import { Award, Heart, Target, Zap, Users } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useEffect, useState } from "react";
 
+// Import carousel images
+import image01 from "@/assets/carousel/image-01.jpg";
+import image02 from "@/assets/carousel/image-02.jpg";
+import image03 from "@/assets/carousel/image-03.jpg";
+import image04 from "@/assets/carousel/image-04.jpg";
+import image05 from "@/assets/carousel/image-05.jpg";
+import image06 from "@/assets/carousel/image-06.jpg";
+import image07 from "@/assets/carousel/image-07.jpg";
+import image08 from "@/assets/carousel/image-08.jpg";
+import image09 from "@/assets/carousel/image-09.jpg";
+import image10 from "@/assets/carousel/image-10.jpg";
+import image11 from "@/assets/carousel/image-11.jpg";
+import image12 from "@/assets/carousel/image-12.jpg";
+import image13 from "@/assets/carousel/image-13.jpg";
+import image14 from "@/assets/carousel/image-14.jpg";
+import image15 from "@/assets/carousel/image-15.jpg";
+import image16 from "@/assets/carousel/image-16.jpg";
+import image17 from "@/assets/carousel/image-17.jpg";
+import image18 from "@/assets/carousel/image-18.jpg";
+import image19 from "@/assets/carousel/image-19.jpg";
+import image20 from "@/assets/carousel/image-20.jpg";
+import image21 from "@/assets/carousel/image-21.jpg";
+import image22 from "@/assets/carousel/image-22.jpg";
+import image23 from "@/assets/carousel/image-23.jpg";
+import image24 from "@/assets/carousel/image-24.jpg";
+import image25 from "@/assets/carousel/image-25.jpg";
+import image26 from "@/assets/carousel/image-26.jpg";
+
 const About = () => {
   const carouselImages = [
-    "/src/assets/carousel/image-01.jpg",
-    "/src/assets/carousel/image-02.jpg",
-    "/src/assets/carousel/image-03.jpg",
-    "/src/assets/carousel/image-04.jpg",
-    "/src/assets/carousel/image-05.jpg",
-    "/src/assets/carousel/image-06.jpg",
-    "/src/assets/carousel/image-07.jpg",
-    "/src/assets/carousel/image-08.jpg",
-    "/src/assets/carousel/image-09.jpg",
-    "/src/assets/carousel/image-10.jpg",
-    "/src/assets/carousel/image-11.jpg",
-    "/src/assets/carousel/image-12.jpg",
-    "/src/assets/carousel/image-13.jpg",
-    "/src/assets/carousel/image-14.jpg",
-    "/src/assets/carousel/image-15.jpg",
-    "/src/assets/carousel/image-16.jpg",
-    "/src/assets/carousel/image-17.jpg",
-    "/src/assets/carousel/image-18.jpg",
-    "/src/assets/carousel/image-19.jpg",
-    "/src/assets/carousel/image-20.jpg",
-    "/src/assets/carousel/image-21.jpg",
-    "/src/assets/carousel/image-22.jpg",
-    "/src/assets/carousel/image-23.jpg",
-    "/src/assets/carousel/image-24.jpg",
-    "/src/assets/carousel/image-25.jpg",
-    "/src/assets/carousel/image-26.jpg"
+    image01,
+    image02,
+    image03,
+    image04,
+    image05,
+    image06,
+    image07,
+    image08,
+    image09,
+    image10,
+    image11,
+    image12,
+    image13,
+    image14,
+    image15,
+    image16,
+    image17,
+    image18,
+    image19,
+    image20,
+    image21,
+    image22,
+    image23,
+    image24,
+    image25,
+    image26
   ];
 
   const values = [
