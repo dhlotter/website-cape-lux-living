@@ -125,7 +125,7 @@ const About = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Content */}
           <div>
             <Badge variant="secondary" className="mb-4">
@@ -143,9 +143,9 @@ const About = () => {
           </div>
 
           {/* Image Carousel */}
-          <div className="relative w-full">
+          <div className="relative w-full max-w-full overflow-hidden">
             <Carousel 
-              className="w-full max-w-sm sm:max-w-md md:max-w-lg mx-auto"
+              className="w-full"
               setApi={setApi}
               opts={{
                 align: "start",
@@ -155,11 +155,11 @@ const About = () => {
               <CarouselContent>
                 {carouselImages.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="relative rounded-2xl overflow-hidden shadow-luxury">
+                    <div className="relative rounded-2xl overflow-hidden shadow-luxury w-full">
                       <img 
                         src={image}
                         alt={`Property showcase ${index + 1}`}
-                        className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover transition-transform duration-500 hover:scale-105"
+                        className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover transition-transform duration-500 hover:scale-105 max-w-full"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
                     </div>
