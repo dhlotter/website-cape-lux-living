@@ -102,8 +102,8 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Main Services Grid - Single Row Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
+        {/* Main Services Grid - Responsive Layout */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-16">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
