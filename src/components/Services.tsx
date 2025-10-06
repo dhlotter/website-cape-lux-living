@@ -107,27 +107,24 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="group hover:shadow-luxury transition-all duration-300 border-0 bg-white">
-                <CardHeader className="pb-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl text-foreground">
-                        {service.title}
-                      </CardTitle>
-                    </div>
+              <Card
+                key={index}
+                className="group border-0 bg-white transition-all duration-300 hover:shadow-luxury"
+              >
+                <CardContent className="p-6">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-primary rounded-full mb-4 group-hover:scale-110 transition-transform">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <CardTitle className="text-lg font-semibold text-foreground mb-3">
+                    {service.title}
+                  </CardTitle>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                     {service.description}
                   </p>
                   <ul className="space-y-3">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center space-x-3">
-                        <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                      <li key={featureIndex} className="flex items-start space-x-3">
+                        <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-muted-foreground">{feature}</span>
                       </li>
                     ))}
