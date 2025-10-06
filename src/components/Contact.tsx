@@ -40,7 +40,7 @@ const Contact = () => {
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transition-bounce"
+              className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transform hover:scale-105 transition-bounce"
             >
               <a
                 href="https://wa.me/27834619283?text=Cape%20Lux%20Living%20-%20Property%20Management%20Enquiry%0A%0AHi%20Johan%2C%20I'm%20interested%20in%20your%20services."
@@ -51,7 +51,12 @@ const Contact = () => {
                 WhatsApp Us
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-full">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="w-full shadow-luxury hover:shadow-glow transform hover:scale-105 transition-bounce"
+            >
               <a href="mailto:ijduplessis@yahoo.com?subject=Cape%20Lux%20Living%20-%20Property%20Management%20Enquiry">
                 <Mail className="w-5 h-5" />
                 Email Us
