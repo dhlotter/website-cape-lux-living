@@ -55,7 +55,7 @@ const Pricing = () => {
               </div>
               
               <CardTitle className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                15%
+                17%
               </CardTitle>
               
               <p className="text-xl text-primary font-semibold mb-2">
