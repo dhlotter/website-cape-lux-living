@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Building, Briefcase, FileText, Phone, List, House } from "lucide-react";
+import { Menu, X, Home, Building, Briefcase, FileText, Phone, List } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navigation = () => {
@@ -29,11 +29,15 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <a href="#" className="flex-shrink-0" aria-label="Cape Lux Living home">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <House className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg sm:text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <div className="flex items-center space-x-3">
+              <img
+                src="/logo-nobackground.webp"
+                alt="Cape Lux Living logo"
+                className="w-12 h-12 object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="text-2xl sm:text-3xl font-['Great_Vibes',_cursive] text-[#2c5c63] leading-none drop-shadow-sm">
                 Cape Lux Living
               </span>
             </div>
