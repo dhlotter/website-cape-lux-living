@@ -77,24 +77,21 @@ const Services = () => {
   const platformLogos = [
     {
       name: "Airbnb",
-      logo: "/logos/airbnb.svg",
+      logo: "/logos/airbnb.webp",
       background: "bg-[#FF5A5F]",
-      padding: "p-1",
-      imageClass: "transform scale-110"
+      padding: "p-1"
     },
     {
       name: "Booking.com",
-      logo: "/logos/booking.svg",
-      background: "bg-white",
-      padding: "p-3",
-      imageClass: "transform scale-90"
+      logo: "/logos/booking.webp",
+      background: "bg-[#ffffff]",
+      padding: "p-0"
     },
     {
       name: "LekkeSlaap",
-      logo: "/logos/lekke.svg",
+      logo: "/logos/lekke.webp",
       background: "bg-[#F37021]",
-      padding: "p-1",
-      imageClass: "transform scale-110"
+      padding: "p-0"
     }
   ];
 
@@ -133,7 +130,7 @@ const Services = () => {
                 <img
                   src={platform.logo}
                   alt={platform.name}
-                  className={`h-full w-full object-contain ${platform.imageClass}`}
+                  className="h-full w-full object-contain"
                 />
               </div>
             ))}
