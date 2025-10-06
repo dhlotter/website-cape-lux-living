@@ -1,5 +1,3 @@
-import { Building, Phone, Mail, MapPin } from "lucide-react";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -22,6 +20,14 @@ const Footer = () => {
               </a>
               <a href="#" className="text-white/60 hover:text-primary transition-colors text-sm">
                 Sitemap
+              </a>
+              <a
+                href="https://easyentropy.com/contact"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white/60 hover:text-primary transition-colors text-sm"
+              >
+                Built by Easy Entropy
               </a>
             </div>
           </div>

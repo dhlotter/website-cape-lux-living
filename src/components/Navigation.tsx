@@ -15,6 +15,14 @@ const Navigation = () => {
     { name: "Contact", href: "#contact", icon: Phone }
   ];
 
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-elegant">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +56,13 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="luxury" size="default" className="text-sm">
+            <Button
+              variant="luxury"
+              size="default"
+              className="text-sm"
+              type="button"
+              onClick={handleScrollToContact}
+            >
               List With Us
             </Button>
           </div>
@@ -88,11 +102,12 @@ const Navigation = () => {
             );
           })}
           <div className="pt-4 px-4">
-            <Button 
-              variant="luxury" 
-              size="default" 
+            <Button
+              variant="luxury"
+              size="default"
               className="w-full text-base py-3"
-              onClick={() => setIsOpen(false)}
+              type="button"
+              onClick={handleScrollToContact}
             >
               List With Us
             </Button>
