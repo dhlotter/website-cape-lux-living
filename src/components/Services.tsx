@@ -78,21 +78,21 @@ const Services = () => {
   const platforms = [
     {
       name: "Airbnb",
-      handle: "airbnb.com",
-      accent: "bg-[#FF5A5F]",
-      description: "Superhost-level guest experiences"
+      url: "https://airbnb.com",
+      label: "airbnb",
+      color: "#FF5A5F"
     },
     {
       name: "Booking.com",
-      handle: "booking.com",
-      accent: "bg-[#003580]",
-      description: "Global reach with verified reviews"
+      url: "https://booking.com",
+      label: "Booking",
+      color: "#003580"
     },
     {
       name: "LekkeSlaap",
-      handle: "lekkeslaap.co.za",
-      accent: "bg-[#FF7F11]",
-      description: "Loved by South African travellers"
+      url: "https://www.lekkeslaap.co.za",
+      label: "LekkeSlaap",
+      color: "#FF7F11"
     }
   ];
 
@@ -119,6 +119,32 @@ const Services = () => {
             From marketing and guest management to maintenance and revenue optimization, 
             we handle every aspect of your property investment so you can focus on what matters most.
           </p>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mt-4">
+            We expertly list, manage, and optimise your home on premier booking platforms like Airbnb, Booking.com,
+            and LekkeSlaap to maximise returns while delivering five-star guest experiences.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+            {platforms.map((platform) => (
+              <div key={platform.name} className="flex flex-col items-center space-y-3">
+                <a
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 rounded-full"
+                >
+                  <div
+                    className="flex h-20 w-20 items-center justify-center rounded-full shadow-luxury transition-transform duration-300 hover:scale-110 md:h-24 md:w-24"
+                    style={{ backgroundColor: platform.color }}
+                  >
+                    <span className="text-white font-semibold text-sm md:text-base tracking-wide uppercase">
+                      {platform.label}
+                    </span>
+                  </div>
+                </a>
+                <span className="text-sm font-medium text-muted-foreground">{platform.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Main Services Grid - Responsive Layout */}
@@ -154,42 +180,6 @@ const Services = () => {
           })}
         </div>
 
-        <div className="bg-white/80 border border-white/40 rounded-2xl p-8 shadow-luxury backdrop-blur-sm">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
-            <div>
-              <Badge variant="secondary" className="mb-3">
-                Trusted platforms
-              </Badge>
-              <h3 className="text-2xl font-semibold text-foreground">
-                Listed on premier booking networks
-              </h3>
-              <p className="text-muted-foreground mt-2">
-                Proven performance across the world’s most reputable short-stay marketplaces.
-              </p>
-            </div>
-          </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {platforms.map((platform) => (
-              <div
-                key={platform.name}
-                className="group flex items-start gap-3 rounded-xl border border-border/60 bg-white/90 p-4 shadow-elegant transition-all duration-300 hover:shadow-luxury hover:-translate-y-1"
-              >
-                <span className={`mt-1 h-3 w-3 rounded-full ${platform.accent}`} aria-hidden="true" />
-                <div>
-                  <p className="font-semibold text-foreground flex items-center gap-2">
-                    {platform.name}
-                    <span className="text-xs uppercase tracking-wide text-muted-foreground">
-                      {platform.handle}
-                    </span>
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {platform.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
