@@ -1,10 +1,10 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Camera, 
-  Users, 
-  Home, 
-  TrendingUp, 
+import {
+  Camera,
+  Users,
+  Home,
+  TrendingUp,
   CheckCircle,
   Hammer
 } from "lucide-react";
@@ -18,7 +18,7 @@ const Services = () => {
       description: "Premium photography, virtual tours, and multi-platform listing optimization to maximize visibility.",
       features: [
         "Professional photography & staging",
-        "Virtual tours & 360° experiences", 
+        "Virtual tours & 360° experiences",
         "Multi-platform listing management",
         "Dynamic pricing optimization",
         "SEO-optimized descriptions"
@@ -74,32 +74,34 @@ const Services = () => {
     }
   ];
 
-
-  const platforms = [
+  const platformLogos = [
     {
       name: "Airbnb",
-      url: "https://airbnb.com",
       logo: "/logos/airbnb.svg",
-      alt: "Airbnb"
+      background: "bg-[#FF5A5F]",
+      padding: "p-1",
+      imageClass: "transform scale-110"
     },
     {
       name: "Booking.com",
-      url: "https://booking.com",
       logo: "/logos/booking.svg",
-      alt: "Booking.com"
+      background: "bg-white",
+      padding: "p-3",
+      imageClass: "transform scale-90"
     },
     {
       name: "LekkeSlaap",
-      url: "https://www.lekkeslaap.co.za",
       logo: "/logos/lekke.svg",
-      alt: "LekkeSlaap"
+      background: "bg-[#F37021]",
+      padding: "p-1",
+      imageClass: "transform scale-110"
     }
   ];
 
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section 
+    <section
       ref={ref}
       id="services" 
       className={`py-20 bg-background transition-all duration-700 ${
@@ -119,29 +121,21 @@ const Services = () => {
             From marketing and guest management to maintenance and revenue optimization, 
             we handle every aspect of your property investment so you can focus on what matters most.
           </p>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mt-4">
-            We expertly list, manage, and optimise your home on premier booking platforms like Airbnb, Booking.com,
-            and LekkeSlaap to maximise returns while delivering five-star guest experiences.
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto mt-6 leading-relaxed">
+            Our distribution network spans leading travel platforms including Airbnb, Booking.com, and LekkeSlaap—ensuring your property reaches premium guests locally and abroad.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-            {platforms.map((platform) => (
-              <a
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-6">
+            {platformLogos.map((platform) => (
+              <div
                 key={platform.name}
-                href={platform.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2"
-                aria-label={`${platform.name} profile`}
+                className={`w-20 h-20 rounded-full shadow-elegant flex items-center justify-center overflow-hidden ${platform.background} ${platform.padding}`}
               >
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-luxury ring-2 ring-white/70 transition-transform duration-300 hover:scale-110 md:h-24 md:w-24">
-                  <img
-                    src={platform.logo}
-                    alt={platform.alt}
-                    className="h-10 w-10 object-contain md:h-12 md:w-12"
-                    loading="lazy"
-                  />
-                </div>
-              </a>
+                <img
+                  src={platform.logo}
+                  alt={platform.name}
+                  className={`h-full w-full object-contain ${platform.imageClass}`}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -178,7 +172,6 @@ const Services = () => {
             );
           })}
         </div>
-
       </div>
     </section>
   );
