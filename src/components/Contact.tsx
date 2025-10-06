@@ -1,70 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Phone, Send, MessageCircle, Mail } from "lucide-react";
-import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const mailto = new URL(`mailto:ijduplessis@yahoo.com`);
-    const subject = "New property enquiry via Cape Lux Living";
-    const bodyLines = [
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      formData.phone ? `Phone: ${formData.phone}` : null,
-      "",
-      "Message:",
-      formData.message
-    ].filter(Boolean);
-
-    mailto.searchParams.set("subject", subject);
-    mailto.searchParams.set("body", bodyLines.join("\n"));
-
-    window.location.href = mailto.toString();
-
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: ""
-    });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Phone",
-      details: ["+27 (0) 83 461 9283"],
-      action: "Call us directly"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      details: ["ijduplessis@yahoo.com"],
-      action: "We respond within 24 hours"
-    }
-  ];
-
   const { ref, isVisible } = useScrollAnimation();
 
   return (
@@ -90,130 +29,30 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className="border-0 bg-white shadow-luxury h-fit lg:h-full">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <Send className="w-5 h-5 text-white" />
-                </div>
-                <span>Tell Us About Your Property</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Johan Smith"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="johan@example.com"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+27 82 123 4567"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="message">Tell us about your property</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Share details about your property, location, and any specific requirements..."
-                    rows={5}
-                    required
-                  />
-                </div>
-
-                <Button type="submit" variant="luxury" size="lg" className="w-full group">
-                  <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Button asChild variant="luxury" size="lg" className="w-full">
-                <a href="tel:+27834619283">
-                  <Phone className="w-5 h-5" />
-                  Call Us
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transition-bounce"
-              >
-                <a href="https://wa.me/27834619283?text=Hi%20Cape%20Lux%20Living%2C%20I'm%20interested%20in%20your%20services.">
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp Us
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="w-full sm:col-span-2">
-                <a href="mailto:ijduplessis@yahoo.com?subject=Property%20Management%20Enquiry">
-                  <Mail className="w-5 h-5" />
-                  Email Us Directly
-                </a>
-              </Button>
-            </div>
-
-            {contactInfo.map((info, index) => {
-              const Icon = info.icon;
-              return (
-                <Card key={index} className="border-0 bg-white hover:shadow-elegant transition-all duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-foreground mb-2">{info.title}</h3>
-                        {info.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-muted-foreground mb-1">
-                            {detail}
-                          </p>
-                        ))}
-                        <p className="text-sm text-primary font-medium mt-2">
-                          {info.action}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-
+        <div className="max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Button asChild variant="luxury" size="lg" className="w-full">
+              <a href="tel:+27834619283">
+                <Phone className="w-5 h-5" />
+                Call Us
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transition-bounce"
+            >
+              <a href="https://wa.me/27834619283?text=Hi%20Cape%20Lux%20Living%2C%20I'm%20interested%20in%20your%20services.">
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp Us
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="w-full">
+              <a href="mailto:ijduplessis@yahoo.com?subject=Property%20Management%20Enquiry">
+                <Mail className="w-5 h-5" />
+                Email Us
+              </a>
+            </Button>
           </div>
         </div>
       </div>
