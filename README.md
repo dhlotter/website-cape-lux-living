@@ -62,7 +62,23 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/aebb61e3-0df5-444c-b4b7-c9ce0712f686) and click on Share -> Publish.
+This site is deployed via GitHub Pages from the `docs/` directory on the `main` branch. To publish new changes from your local machine:
+
+```sh
+# 1. Build for production (postbuild syncs dist/ -> docs/)
+npm run build
+
+# 2. Stage generated assets and any source updates
+git add docs/ public/ src/
+
+# 3. Commit with a descriptive message
+git commit -m "Describe your change"
+
+# 4. Push to main to trigger the GitHub Pages deploy workflow
+git push origin main
+```
+
+After the push completes, GitHub Pages will automatically redeploy. Wait for the workflow to finish, then refresh the live site to confirm your updates.
 
 ## Can I connect a custom domain to my Lovable project?
 
