@@ -43,7 +43,7 @@ const Contact = () => {
               className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transition-bounce"
             >
               <a
-                href="https://wa.me/27834619283?text=Hi%20Cape%20Lux%20Living%2C%20I'm%20interested%20in%20your%20services."
+                href="https://wa.me/27834619283?text=Cape%20Lux%20Living%20-%20Property%20Management%20Enquiry%0A%0AHi%20Johan%2C%20I'm%20interested%20in%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -52,7 +52,7 @@ const Contact = () => {
               </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full">
-              <a href="mailto:ijduplessis@yahoo.com?subject=Property%20Management%20Enquiry">
+              <a href="mailto:ijduplessis@yahoo.com?subject=Cape%20Lux%20Living%20-%20Property%20Management%20Enquiry">
                 <Mail className="w-5 h-5" />
                 Email Us
               </a>
