@@ -4,12 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { 
-  Phone, 
-  MapPin, 
-  Clock,
-  Send
-} from "lucide-react";
+import { Phone, Send, MessageCircle, Mail } from "lucide-react";
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -23,8 +18,29 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+
+    const mailto = new URL(`mailto:ijduplessis@yahoo.com`);
+    const subject = "New property enquiry via Cape Lux Living";
+    const bodyLines = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.phone ? `Phone: ${formData.phone}` : null,
+      "",
+      "Message:",
+      formData.message
+    ].filter(Boolean);
+
+    mailto.searchParams.set("subject", subject);
+    mailto.searchParams.set("body", bodyLines.join("\n"));
+
+    window.location.href = mailto.toString();
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,8 +54,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+27 (0) 21 123 4567", "+27 (0) 82 123 4567"],
+      details: ["+27 (0) 83 461 9283"],
       action: "Call us directly"
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      details: ["ijduplessis@yahoo.com"],
+      action: "We respond within 24 hours"
     }
   ];
 
@@ -141,6 +163,31 @@ const Contact = () => {
 
           {/* Contact Information */}
           <div className="space-y-6">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Button asChild variant="luxury" size="lg" className="w-full">
+                <a href="tel:+27834619283">
+                  <Phone className="w-5 h-5" />
+                  Call Us
+                </a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transition-bounce"
+              >
+                <a href="https://wa.me/27834619283?text=Hi%20Cape%20Lux%20Living%2C%20I'm%20interested%20in%20your%20services.">
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp Us
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="w-full sm:col-span-2">
+                <a href="mailto:ijduplessis@yahoo.com?subject=Property%20Management%20Enquiry">
+                  <Mail className="w-5 h-5" />
+                  Email Us Directly
+                </a>
+              </Button>
+            </div>
+
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
