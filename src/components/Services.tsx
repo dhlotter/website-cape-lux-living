@@ -134,22 +134,6 @@ const Services = () => {
             );
           })}
         </div>
-
-
-        {/* CTA */}
-        <div className="text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Ready to Maximize Your Property Returns?
-          </h3>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join hundreds of property owners who trust Cape Lux Living to manage their investments 
-            and deliver exceptional returns.
-          </p>
-          <Button variant="luxury" size="lg" className="group" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-            Get Started Today
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
       </div>
     </section>
   );
