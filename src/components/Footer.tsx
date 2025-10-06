@@ -12,13 +12,10 @@ const Footer = () => {
               © {currentYear} Cape Lux Living. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-white/60 hover:text-primary transition-colors text-sm">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-white/60 hover:text-primary transition-colors text-sm">
-                Terms of Service
-              </a>
-              <a href="#" className="text-white/60 hover:text-primary transition-colors text-sm">
+              <a
+                href="/sitemap.xml"
+                className="text-white/60 hover:text-primary transition-colors text-sm"
+              >
                 Sitemap
               </a>
               <a
