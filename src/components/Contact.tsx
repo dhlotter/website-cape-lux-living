@@ -42,7 +42,11 @@ const Contact = () => {
               size="lg"
               className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transition-bounce"
             >
-              <a href="https://wa.me/27834619283?text=Hi%20Cape%20Lux%20Living%2C%20I'm%20interested%20in%20your%20services.">
+              <a
+                href="https://wa.me/27834619283?text=Hi%20Cape%20Lux%20Living%2C%20I'm%20interested%20in%20your%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp Us
               </a>
