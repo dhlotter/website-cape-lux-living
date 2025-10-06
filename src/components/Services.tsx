@@ -79,20 +79,20 @@ const Services = () => {
     {
       name: "Airbnb",
       url: "https://airbnb.com",
-      label: "airbnb",
-      color: "#FF5A5F"
+      logo: "/logos/airbnb.svg",
+      alt: "Airbnb"
     },
     {
       name: "Booking.com",
       url: "https://booking.com",
-      label: "Booking",
-      color: "#003580"
+      logo: "/logos/booking.svg",
+      alt: "Booking.com"
     },
     {
       name: "LekkeSlaap",
       url: "https://www.lekkeslaap.co.za",
-      label: "LekkeSlaap",
-      color: "#FF7F11"
+      logo: "/logos/lekke.svg",
+      alt: "LekkeSlaap"
     }
   ];
 
@@ -125,24 +125,23 @@ const Services = () => {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
             {platforms.map((platform) => (
-              <div key={platform.name} className="flex flex-col items-center space-y-3">
-                <a
-                  href={platform.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 rounded-full"
-                >
-                  <div
-                    className="flex h-20 w-20 items-center justify-center rounded-full shadow-luxury transition-transform duration-300 hover:scale-110 md:h-24 md:w-24"
-                    style={{ backgroundColor: platform.color }}
-                  >
-                    <span className="text-white font-semibold text-sm md:text-base tracking-wide uppercase">
-                      {platform.label}
-                    </span>
-                  </div>
-                </a>
-                <span className="text-sm font-medium text-muted-foreground">{platform.name}</span>
-              </div>
+              <a
+                key={platform.name}
+                href={platform.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2"
+                aria-label={`${platform.name} profile`}
+              >
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-luxury ring-2 ring-white/70 transition-transform duration-300 hover:scale-110 md:h-24 md:w-24">
+                  <img
+                    src={platform.logo}
+                    alt={platform.alt}
+                    className="h-10 w-10 object-contain md:h-12 md:w-12"
+                    loading="lazy"
+                  />
+                </div>
+              </a>
             ))}
           </div>
         </div>

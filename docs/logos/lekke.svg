@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lekkeGradient" x1="15" y1="12" x2="105" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF7F11" />
+      <stop offset="1" stop-color="#FF9A3D" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="26" fill="url(#lekkeGradient)" />
+  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" fill="white" font-family="'Montserrat', 'Poppins', 'Arial', sans-serif" font-size="44" font-weight="700" letter-spacing="0.02em">
+    lekke
+  </text>
+</svg>
