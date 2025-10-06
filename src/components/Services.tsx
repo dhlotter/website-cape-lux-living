@@ -1,13 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { 
   Camera, 
   Users, 
   Home, 
   TrendingUp, 
   CheckCircle,
-  ArrowRight,
   Hammer
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -77,6 +75,27 @@ const Services = () => {
   ];
 
 
+  const platforms = [
+    {
+      name: "Airbnb",
+      handle: "airbnb.com",
+      accent: "bg-[#FF5A5F]",
+      description: "Superhost-level guest experiences"
+    },
+    {
+      name: "Booking.com",
+      handle: "booking.com",
+      accent: "bg-[#003580]",
+      description: "Global reach with verified reviews"
+    },
+    {
+      name: "LekkeSlaap",
+      handle: "lekkeslaap.co.za",
+      accent: "bg-[#FF7F11]",
+      description: "Loved by South African travellers"
+    }
+  ];
+
   const { ref, isVisible } = useScrollAnimation();
 
   return (
@@ -133,6 +152,43 @@ const Services = () => {
               </Card>
             );
           })}
+        </div>
+
+        <div className="bg-white/80 border border-white/40 rounded-2xl p-8 shadow-luxury backdrop-blur-sm">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
+            <div>
+              <Badge variant="secondary" className="mb-3">
+                Trusted platforms
+              </Badge>
+              <h3 className="text-2xl font-semibold text-foreground">
+                Listed on premier booking networks
+              </h3>
+              <p className="text-muted-foreground mt-2">
+                Proven performance across the world’s most reputable short-stay marketplaces.
+              </p>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {platforms.map((platform) => (
+              <div
+                key={platform.name}
+                className="group flex items-start gap-3 rounded-xl border border-border/60 bg-white/90 p-4 shadow-elegant transition-all duration-300 hover:shadow-luxury hover:-translate-y-1"
+              >
+                <span className={`mt-1 h-3 w-3 rounded-full ${platform.accent}`} aria-hidden="true" />
+                <div>
+                  <p className="font-semibold text-foreground flex items-center gap-2">
+                    {platform.name}
+                    <span className="text-xs uppercase tracking-wide text-muted-foreground">
+                      {platform.handle}
+                    </span>
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {platform.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
