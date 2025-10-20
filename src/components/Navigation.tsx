@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, Building, Briefcase, FileText, Phone, List } from "lucide-react";
 import { cn } from "@/lib/utils";
+import houseLinesLogo from "@/assets/capelux_house_lines.svg";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,8 +12,7 @@ const Navigation = () => {
     { name: "About Us", href: "#about", icon: Building },
     { name: "Our Services", href: "#services", icon: Briefcase },
     { name: "Listings", href: "#listings", icon: List },
-    { name: "Our Fees", href: "#fees", icon: FileText },
-    { name: "Contact", href: "#contact", icon: Phone }
+    { name: "Our Fees", href: "#fees", icon: FileText }
   ];
 
   const handleScrollToContact = () => {
@@ -29,16 +29,16 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <a href="#" className="flex-shrink-0" aria-label="Cape Lux Living home">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
               <img
-                src="/logo-nobackground.webp"
+                src={houseLinesLogo}
                 alt="Cape Lux Living logo"
-                className="w-12 h-12 object-contain"
+                className="w-28 h-[3.5rem] object-contain -translate-y-[0.4rem]"
                 loading="lazy"
                 decoding="async"
               />
-              <span className="text-2xl sm:text-3xl font-['Great_Vibes',_cursive] text-[#2c5c63] leading-none drop-shadow-sm">
-                Cape Lux Living
+              <span className="text-2xl sm:text-3xl font-['Cinzel',_serif] tracking-[0.08em] text-[#b7933b] leading-tight drop-shadow-sm">
+                CapeLuxLiving
               </span>
             </div>
           </a>
@@ -50,7 +50,7 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground hover:text-primary transition-smooth px-2 xl:px-3 py-2 rounded-md text-sm font-medium hover:bg-muted whitespace-nowrap"
+                  className="text-foreground transition-smooth px-2 xl:px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap hover:bg-muted hover:text-primary"
                 >
                   {item.name}
                 </a>
@@ -67,7 +67,7 @@ const Navigation = () => {
               type="button"
               onClick={handleScrollToContact}
             >
-              List With Us
+              Contact Us
             </Button>
           </div>
 
@@ -97,7 +97,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="flex items-center space-x-3 text-foreground hover:text-primary hover:bg-muted px-4 py-3 rounded-lg text-base font-medium transition-smooth active:bg-muted/80"
+                className="flex items-center space-x-3 text-foreground px-4 py-3 rounded-lg text-base font-medium transition-smooth hover:bg-muted hover:text-primary active:bg-muted/80"
                 onClick={() => setIsOpen(false)}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
@@ -113,7 +113,7 @@ const Navigation = () => {
               type="button"
               onClick={handleScrollToContact}
             >
-              List With Us
+              Contact Us
             </Button>
           </div>
         </div>

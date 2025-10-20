@@ -9,6 +9,9 @@ import {
   Hammer
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import airbnbLogo from "@/assets/logos/airbnb.webp";
+import bookingLogo from "@/assets/logos/booking.webp";
+import lekkeLogo from "@/assets/logos/lekke.webp";
 
 const Services = () => {
   const services = [
@@ -77,19 +80,19 @@ const Services = () => {
   const platformLogos = [
     {
       name: "Airbnb",
-      logo: "/logos/airbnb.webp",
+      logo: airbnbLogo,
       background: "bg-[#FF5A5F]",
       padding: "p-1"
     },
     {
       name: "Booking.com",
-      logo: "/logos/booking.webp",
+      logo: bookingLogo,
       background: "bg-[#ffffff]",
       padding: "p-0"
     },
     {
       name: "LekkeSlaap",
-      logo: "/logos/lekke.webp",
+      logo: lekkeLogo,
       background: "bg-[#F37021]",
       padding: "p-0"
     }
