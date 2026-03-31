@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Award, Heart, Target, Zap, Users } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -104,11 +103,16 @@ const About = () => {
   useEffect(() => {
     if (!api) return;
 
-    setCurrent(api.selectedScrollSnap());
-
-    api.on("select", () => {
+    const onSelect = () => {
       setCurrent(api.selectedScrollSnap());
-    });
+    };
+
+    onSelect();
+    api.on("select", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
 
   useEffect(() => {

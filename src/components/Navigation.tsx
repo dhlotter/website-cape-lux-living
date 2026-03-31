@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Building, Briefcase, FileText, Phone, List } from "lucide-react";
+import { Menu, X, Home, Building, Briefcase, FileText, List } from "lucide-react";
 import { cn } from "@/lib/utils";
 import houseLinesLogo from "@/assets/capelux_house_lines.svg";
 

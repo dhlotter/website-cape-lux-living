@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Shield, TrendingUp, Users } from "lucide-react";
+import { Star, Shield, TrendingUp, Users } from "lucide-react";
 import heroImage from "@/assets/hero-image.webp";
 
 const Hero = () => {

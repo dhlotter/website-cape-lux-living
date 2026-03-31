@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const STORAGE_KEY = "cookie-notice-dismissed";
 
 const CookieNotice = () => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      setVisible(true);
-    }
-  }, []);
+  const [visible, setVisible] = useState(
+    () => !localStorage.getItem(STORAGE_KEY)
+  );
 
   const dismiss = () => {
     localStorage.setItem(STORAGE_KEY, "1");
