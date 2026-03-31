@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				display: ['Cinzel', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -53,6 +56,17 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				brand: {
+					gold: '#b7933b',
+				},
+				platform: {
+					whatsapp: {
+						DEFAULT: '#25D366',
+						hover: '#1ebe5a',
+					},
+					airbnb: '#FF5A5F',
+					lekke: '#F37021',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

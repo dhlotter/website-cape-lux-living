@@ -34,10 +34,8 @@ const Navigation = () => {
                 src={houseLinesLogo}
                 alt="Cape Lux Living logo"
                 className="w-28 h-[3.5rem] object-contain -translate-y-[0.4rem]"
-                loading="lazy"
-                decoding="async"
               />
-              <span className="text-2xl sm:text-3xl font-['Cinzel',_serif] tracking-[0.08em] text-[#b7933b] leading-tight drop-shadow-sm">
+              <span className="text-2xl sm:text-3xl font-display tracking-[0.08em] text-brand-gold leading-tight drop-shadow-sm">
                 CapeLuxLiving
               </span>
             </div>
@@ -77,6 +75,8 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
               className="text-foreground hover:text-primary"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -86,10 +86,14 @@ const Navigation = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className={cn(
-        "lg:hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-md",
-        isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-      )}>
+      <div
+        role="navigation"
+        aria-label="Mobile menu"
+        className={cn(
+          "lg:hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-md",
+          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        )}
+      >
         <div className="px-4 pt-2 pb-4 space-y-1 border-t border-border shadow-lg">
           {navItems.map((item) => {
             const Icon = item.icon;

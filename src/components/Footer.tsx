@@ -21,7 +21,7 @@ const Footer = () => {
               <a
                 href="https://easyentropy.com/contact"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-primary transition-colors text-sm"
               >
                 Built by Easy Entropy

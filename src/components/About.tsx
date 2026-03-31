@@ -1,38 +1,38 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Award, Heart, Target, Zap, Users } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // Import carousel images
-import image01 from "@/assets/carousel/image-01.jpg";
-import image02 from "@/assets/carousel/image-02.jpg";
-import image03 from "@/assets/carousel/image-03.jpg";
-import image04 from "@/assets/carousel/image-04.jpg";
-import image05 from "@/assets/carousel/image-05.jpg";
-import image06 from "@/assets/carousel/image-06.jpg";
-import image07 from "@/assets/carousel/image-07.jpg";
-import image08 from "@/assets/carousel/image-08.jpg";
-import image09 from "@/assets/carousel/image-09.jpg";
-import image10 from "@/assets/carousel/image-10.jpg";
-import image11 from "@/assets/carousel/image-11.jpg";
-import image12 from "@/assets/carousel/image-12.jpg";
-import image13 from "@/assets/carousel/image-13.jpg";
-import image14 from "@/assets/carousel/image-14.jpg";
-import image15 from "@/assets/carousel/image-15.jpg";
-import image16 from "@/assets/carousel/image-16.jpg";
-import image17 from "@/assets/carousel/image-17.jpg";
-import image18 from "@/assets/carousel/image-18.jpg";
-import image19 from "@/assets/carousel/image-19.jpg";
-import image20 from "@/assets/carousel/image-20.jpg";
-import image21 from "@/assets/carousel/image-21.jpg";
-import image22 from "@/assets/carousel/image-22.jpg";
-import image23 from "@/assets/carousel/image-23.jpg";
-import image24 from "@/assets/carousel/image-24.jpg";
-import image25 from "@/assets/carousel/image-25.jpg";
-import image26 from "@/assets/carousel/image-26.jpg";
+import image01 from "@/assets/carousel/image-01.webp";
+import image02 from "@/assets/carousel/image-02.webp";
+import image03 from "@/assets/carousel/image-03.webp";
+import image04 from "@/assets/carousel/image-04.webp";
+import image05 from "@/assets/carousel/image-05.webp";
+import image06 from "@/assets/carousel/image-06.webp";
+import image07 from "@/assets/carousel/image-07.webp";
+import image08 from "@/assets/carousel/image-08.webp";
+import image09 from "@/assets/carousel/image-09.webp";
+import image10 from "@/assets/carousel/image-10.webp";
+import image11 from "@/assets/carousel/image-11.webp";
+import image12 from "@/assets/carousel/image-12.webp";
+import image13 from "@/assets/carousel/image-13.webp";
+import image14 from "@/assets/carousel/image-14.webp";
+import image15 from "@/assets/carousel/image-15.webp";
+import image16 from "@/assets/carousel/image-16.webp";
+import image17 from "@/assets/carousel/image-17.webp";
+import image18 from "@/assets/carousel/image-18.webp";
+import image19 from "@/assets/carousel/image-19.webp";
+import image20 from "@/assets/carousel/image-20.webp";
+import image21 from "@/assets/carousel/image-21.webp";
+import image22 from "@/assets/carousel/image-22.webp";
+import image23 from "@/assets/carousel/image-23.webp";
+import image24 from "@/assets/carousel/image-24.webp";
+import image25 from "@/assets/carousel/image-25.webp";
+import image26 from "@/assets/carousel/image-26.webp";
 
 const About = () => {
   const carouselImages = [
@@ -93,8 +93,13 @@ const About = () => {
   ];
 
   const { ref, isVisible } = useScrollAnimation();
-  const [api, setApi] = useState<any>();
+  const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const pause = useCallback(() => setPaused(true), []);
+  const resume = useCallback(() => setPaused(false), []);
 
   useEffect(() => {
     if (!api) return;
@@ -107,14 +112,14 @@ const About = () => {
   }, [api]);
 
   useEffect(() => {
-    if (!api) return;
+    if (!api || paused) return;
 
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 3000); // Auto-scroll every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [api]);
+  }, [api, paused]);
 
   return (
     <section 
@@ -143,7 +148,14 @@ const About = () => {
           </div>
 
           {/* Image Carousel */}
-          <div className="relative w-full max-w-full overflow-hidden">
+          <div
+            ref={carouselRef}
+            className="relative w-full max-w-full overflow-hidden"
+            onMouseEnter={pause}
+            onMouseLeave={resume}
+            onFocusCapture={pause}
+            onBlurCapture={resume}
+          >
             <Carousel 
               className="w-full"
               setApi={setApi}
@@ -158,7 +170,11 @@ const About = () => {
                     <div className="relative rounded-2xl overflow-hidden shadow-luxury w-full">
                       <img 
                         src={image}
-                        alt={`Property showcase ${index + 1}`}
+                        alt={`Cape Lux Living property showcase ${index + 1} of ${carouselImages.length}`}
+                        width={800}
+                        height={500}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover transition-transform duration-500 hover:scale-105 max-w-full"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
@@ -166,23 +182,19 @@ const About = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden" />
-              <CarouselNext className="hidden" />
             </Carousel>
             
-            {/* Custom Dots Indicator */}
-            <div className="flex justify-center mt-4 space-x-2">
-              {carouselImages.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === current 
-                      ? "bg-primary w-8" 
-                      : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                  }`}
-                  onClick={() => api?.scrollTo(index)}
+            {/* Progress Indicator */}
+            <div className="flex items-center justify-center mt-4 gap-3">
+              <span className="text-xs text-muted-foreground tabular-nums">
+                {current + 1} / {carouselImages.length}
+              </span>
+              <div className="w-24 h-1 bg-muted-foreground/20 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-primary rounded-full transition-all duration-300"
+                  style={{ width: `${((current + 1) / carouselImages.length) * 100}%` }}
                 />
-              ))}
+              </div>
             </div>
           </div>
         </div>

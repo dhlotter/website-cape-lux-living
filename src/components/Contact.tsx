@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Mail, MessageCircle, Phone } from "lucide-react";
+import { CONTACT } from "@/config/contact";
 
 const Contact = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -32,7 +33,7 @@ const Contact = () => {
         <div className="max-w-3xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Button asChild variant="luxury" size="lg" className="w-full">
-              <a href="tel:+27834619283">
+              <a href={`tel:${CONTACT.phone}`}>
                 <Phone className="w-5 h-5" />
                 Call Us
               </a>
@@ -40,10 +41,10 @@ const Contact = () => {
             <Button
               asChild
               size="lg"
-              className="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white shadow-luxury hover:shadow-glow transform hover:scale-105 transition-bounce"
+              className="w-full bg-platform-whatsapp hover:bg-platform-whatsapp-hover text-white shadow-luxury hover:shadow-glow transform hover:scale-105 transition-bounce"
             >
               <a
-                href="https://wa.me/27834619283?text=Cape%20Lux%20Living%20-%20Property%20Management%20Enquiry%0A%0AHi%20Johan%2C%20I'm%20interested%20in%20your%20services."
+                href={`https://wa.me/${CONTACT.whatsapp}?text=${CONTACT.whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -57,7 +58,7 @@ const Contact = () => {
               size="lg"
               className="w-full shadow-luxury hover:shadow-glow transform hover:scale-105 transition-bounce"
             >
-              <a href="mailto:ijduplessis@yahoo.com?subject=Cape%20Lux%20Living%20-%20Property%20Management%20Enquiry">
+              <a href={`mailto:${CONTACT.email}?subject=Cape%20Lux%20Living%20-%20Property%20Management%20Enquiry`}>
                 <Mail className="w-5 h-5" />
                 Email Us
               </a>

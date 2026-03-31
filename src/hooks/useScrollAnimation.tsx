@@ -8,34 +8,32 @@ interface UseScrollAnimationOptions {
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const thresholdRef = useRef(options.threshold ?? 0.1);
+  const rootMarginRef = useRef(options.rootMargin ?? '0px 0px -100px 0px');
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Optionally unobserve after animation triggers
-          if (ref.current) {
-            observer.unobserve(ref.current);
-          }
+          observer.unobserve(element);
         }
       },
       {
-        threshold: options.threshold || 0.1,
-        rootMargin: options.rootMargin || '0px 0px -100px 0px',
+        threshold: thresholdRef.current,
+        rootMargin: rootMarginRef.current,
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.unobserve(element);
     };
-  }, [options.threshold, options.rootMargin]);
+  }, []);
 
   return { ref, isVisible };
 };

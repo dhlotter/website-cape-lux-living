@@ -81,19 +81,19 @@ const Services = () => {
     {
       name: "Airbnb",
       logo: airbnbLogo,
-      background: "bg-[#FF5A5F]",
+      background: "bg-platform-airbnb",
       padding: "p-1"
     },
     {
       name: "Booking.com",
       logo: bookingLogo,
-      background: "bg-[#ffffff]",
+      background: "bg-white",
       padding: "p-0"
     },
     {
       name: "LekkeSlaap",
       logo: lekkeLogo,
-      background: "bg-[#F37021]",
+      background: "bg-platform-lekke",
       padding: "p-0"
     }
   ];
