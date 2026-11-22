@@ -1,0 +1,41 @@
+name: CI
+
+# The gate the release agent reads: a green push run on the dev head commit counts as staging green.
+# Also runs on the dev to main release PR. Added 2026-11-22, same testing for every repo.
+# This repo is public, so it runs on GitHub's hosted runner, not the private VPS runner.
+on:
+  push:
+    branches: [dev, main]
+    paths-ignore:
+      - 'docs/**'
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The same steps as scripts/prepush.
+      - name: Gate
+        run: scripts/prepush
