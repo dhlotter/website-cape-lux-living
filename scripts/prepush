@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Local gate. Runs the checks CI runs (.github/workflows/ci.yml), before a push leaves the machine.
+# Called by the global git pre-push hook. PREPUSH_SKIP=1 bypasses, with a reason said.
+# The build goes to a temp folder: `npm run build` also syncs the tracked docs/ folder, which only the
+# docs deploy on main should write.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+npm run lint
+out=$(mktemp -d)
+trap 'rm -rf "$out"' EXIT
+npx vite build --outDir "$out" --emptyOutDir
