@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Local gate. Runs the checks CI runs (.github/workflows/ci.yml), before a push leaves the machine.
+# Local gate: lint, a build, then the site tests against that build. CI runs this same script.
 # Called by the global git pre-push hook. PREPUSH_SKIP=1 bypasses, with a reason said.
 # The build goes to a temp folder: `npm run build` also syncs the tracked docs/ folder, which only the
 # docs deploy on main should write.
@@ -9,3 +9,4 @@ npm run lint
 out=$(mktemp -d)
 trap 'rm -rf "$out"' EXIT
 npx vite build --outDir "$out" --emptyOutDir
+SITE_DIST="$out" npm test

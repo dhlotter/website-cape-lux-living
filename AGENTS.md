@@ -14,5 +14,6 @@ Same shape as the other product sites since 2026-11-22.
   Pages builds `main` only.
 - **Never push to `main` and never commit `docs/` by hand.** The only PR is `dev` to `main`, opened by the
   release agent once CI on `dev` is green. Merge commits only, never squash.
-- **Local gate before any push.** `scripts/prepush` runs lint and a build into a temp folder, so the
-  tracked `docs/` folder is left alone.
+- **Local gate before any push.** `scripts/prepush` runs lint, a build into a temp folder (so the tracked
+  `docs/` folder is left alone), then `npm test` against that build: the custom domain file, sitemap and
+  robots, the page head, every local asset, and the contact details. CI runs the same script.
